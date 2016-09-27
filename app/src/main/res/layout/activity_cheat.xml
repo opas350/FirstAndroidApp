@@ -23,12 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:id="@+id/answerTextView"/>
+        android:id="@+id/answer_text_view"
+        tools:text="Answer"/>
     
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/show_answer_button"
+        android:text="@string/show_answer_button"
         android:id="@+id/show_answer_button"/>
 
 </LinearLayout>
