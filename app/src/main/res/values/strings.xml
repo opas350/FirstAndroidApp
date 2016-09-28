@@ -20,6 +20,7 @@
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="show_answer_button">Show Answer</string>
     <string name="cheat_button">Cheat!</string>
-    <string name="judgment_toast">You Rebel Scum!</string>
+    <string name="judgment_toast">Die You Rebel Scum!</string>
+    <string name="return_judment_toast">Came For more...Cheater?</string>
 
 </resources>
