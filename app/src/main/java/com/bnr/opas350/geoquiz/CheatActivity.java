@@ -21,6 +21,7 @@ public class CheatActivity extends AppCompatActivity {
     private static final String EXTRA_ANSWER_SHOWN = "com.bnr.geoquiz.answer_shown";
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
+    private TextView mBuildVersionTextView;
     private Button mShowAnswer;
     private static final String TAG = "CheatActivity";
     private static final String CHEATER_STATE = "Cheater";
@@ -42,24 +43,27 @@ public class CheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
         Log.d(TAG, "onCreate() used");
+        Log.d(TAG, "Build" + Build.VERSION.SDK_INT);
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
 
             CHEAT = savedInstanceState.getBoolean(CHEATER_STATE);
-            if(CHEAT == true) {
+            if (CHEAT == true) {
                 setAnswerShownResult(true);
                 Toast.makeText(this, R.string.return_judment_toast, Toast.LENGTH_SHORT).show();
             }
         }
 
-        Log.d(TAG,"CHEAT = " + CHEAT);
-        mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE,false);
+        Log.d(TAG, "CHEAT = " + CHEAT);
+        mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
 
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
+        mBuildVersionTextView = (TextView) findViewById(R.id.build_version);
+        mBuildVersionTextView.setText("API Level " + Build.VERSION.SDK_INT);
 
-        if(CHEAT == true){
+        if (CHEAT == true) {
             Log.d(TAG, "Cheat Text after rotate.");
-            if(mAnswerIsTrue) {
+            if (mAnswerIsTrue) {
                 mAnswerTextView.setText(R.string.true_button);
             } else {
                 mAnswerTextView.setText(R.string.false_button);
@@ -72,17 +76,17 @@ public class CheatActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                if(mAnswerIsTrue) {
+                if (mAnswerIsTrue) {
                     mAnswerTextView.setText(R.string.true_button);
                 } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 CHEAT = true;
-                Log.d(TAG, "CHEAT= "+ CHEAT);
+                Log.d(TAG, "CHEAT= " + CHEAT);
 
                 setAnswerShownResult(true);
 
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     int cx = mShowAnswer.getWidth() / 2;
                     int cy = mShowAnswer.getHeight() / 2;
                     float radius = mShowAnswer.getWidth();
@@ -97,7 +101,7 @@ public class CheatActivity extends AppCompatActivity {
                         }
                     });
                     anim.start();
-                }else {
+                } else {
                     mAnswerTextView.setVisibility(View.VISIBLE);
                     mShowAnswer.setVisibility(View.INVISIBLE);
                 }

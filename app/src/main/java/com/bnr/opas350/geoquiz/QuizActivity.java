@@ -50,7 +50,7 @@ public class QuizActivity extends AppCompatActivity {
 
         int messageResId = 0;
 
-        if(mIsCheater || mQuestionStates[mCurrentIndex]) {
+        if (mIsCheater || mQuestionStates[mCurrentIndex]) {
             messageResId = R.string.judgment_toast;
         } else {
 
@@ -137,7 +137,7 @@ public class QuizActivity extends AppCompatActivity {
                 //Intent i = new Intent(QuizActivity.this, CheatActivity.class);
                 boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
                 Intent i = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
-               // startActivity(i);
+                // startActivity(i);
 
                 startActivityForResult(i, REQUEST_CODE_CHEAT);
             }
@@ -154,12 +154,12 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode != Activity.RESULT_OK) {
+        if (resultCode != Activity.RESULT_OK) {
             return;
         }
 
-        if(requestCode == REQUEST_CODE_CHEAT) {
-            if(data == null) {
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            if (data == null) {
                 return;
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
